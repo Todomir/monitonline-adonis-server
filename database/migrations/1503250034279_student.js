@@ -4,9 +4,9 @@
 const Schema = use('Schema')
 
 //referência ao aluno no modelo relacional
-class UserSchema extends Schema {
+class StudentSchema extends Schema {
   up () {
-    this.create('users', (table) => {
+    this.create('students', (table) => {
       table.increments()
       table.string('name').notNullable().unique()
       table.string('cpf').notNullable().unique()
@@ -19,8 +19,8 @@ class UserSchema extends Schema {
   }
 
   down () {
-    this.drop('users')
+    this.drop('students')
   }
 }
 
-module.exports = UserSchema
+module.exports = StudentSchema
