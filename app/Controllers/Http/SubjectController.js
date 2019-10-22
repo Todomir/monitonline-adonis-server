@@ -21,8 +21,11 @@ class SubjectController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async index ({ request, response, view }) {
+  async index () {
+    const subjects = await Subject.all()
+    return subjects
   }
+
 
   /**
    * Create/save a new subject.
@@ -51,6 +54,7 @@ class SubjectController {
   async show ({ params, request, response, view }) {
 
   }
+
 
   /**
    * Update subject details.
