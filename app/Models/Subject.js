@@ -5,7 +5,7 @@ const Model = use('Model')
 
 class Subject extends Model {
   subjectMatter(){
-    return this.hasMany('App/Model/SubjectMatter')
+    return this.hasMany('App/Models/SubjectMatter')
   }
 }
 
