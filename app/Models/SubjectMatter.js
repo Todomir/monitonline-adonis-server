@@ -4,8 +4,12 @@
 const Model = use('Model')
 
 class SubjectMatter extends Model {
-  subject (){
+  subject(){
     return this.belongsTo('App/Model/Subject')
+  }
+
+  users(){
+    return this.belongsToMany('App/Model/User')
   }
 }
 
