@@ -1,9 +1,10 @@
 'use strict'
 
+/** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
 const User = use('App/Models/User')
 
 class UserController {
-  async create({ request }){
+  async store({ request }){
     const data = request.body
     const user = await User.create(data)
     return user
