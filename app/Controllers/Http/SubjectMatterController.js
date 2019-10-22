@@ -33,7 +33,10 @@ class SubjectMatterController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async store ({ request, response }) {
+  async store ({ request }) {
+    const data = request.only(['subject_matter_description', 'subject_id'])
+    const subjectMatter = await SubjectMatter.create(data)
+    return subjectMatter
   }
 
   /**
