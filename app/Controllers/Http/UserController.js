@@ -8,17 +8,9 @@ class UserController {
    }
 
    async store({ request }) {
-      const { name, cpf, email, password, course, is_tutor, subject_matters } = request.post();
+      const { name, cpf, email, password, course, is_tutor } = request.post();
       const user = await User.create({ name, cpf, email, password, course, is_tutor });
 
-      if (subject_matters && subject_matters.length > 0) {
-         if (is_tutor != false) {
-            await user.subjectMatters().attach(subject_matters);
-            user.subjectMatters = await user.subjectMatters().fetch();
-         } else {
-            console.log('You must be a tutor to teach a subject matter.');
-         }
-      }
       return user;
    }
 
@@ -30,20 +22,11 @@ class UserController {
    async update({ request, params }) {
 
       const user = await User.findOrFail(params.id);
-      const { name, cpf, email, password, course, is_tutor, subject_matters } = request.post();
+      const { name, cpf, email, password, course, is_tutor } = request.post();
 
-      user.merge({ name, cpf, email, password, course, is_tutor, subject_matters });
+      user.merge({ name, cpf, email, password, course, is_tutor });
       await user.save();
 
-      if (subject_matters && subject_matters.length > 0) {
-         if (is_tutor != false) {
-            await user.subjectMatters().detach();
-            await user.subjectMatters().attach(subject_matters);
-            user.subjectMatters = await user.subjectMatters().fetch();
-         } else {
-            console.log('You must be a tutor to teach a subject matter.');
-         }
-      }
       return user;
    }
 
