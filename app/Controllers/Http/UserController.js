@@ -27,7 +27,7 @@ class UserController {
       return user;
    }
 
-   async update({ request }) {
+   async update({ request, params }) {
 
       const user = await User.findByOrFail(params.id);
       const { name, cpf, email, password, course, is_tutor, subject_matters } = request.post();
