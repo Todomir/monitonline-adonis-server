@@ -14,7 +14,9 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route');
 
-Route.post('/store', 'UserController.store');
+Route.group(() => {
+   Route.resource('users', 'UserController').apiOnly();
+});
 
 Route.group(() => {
    Route.resource('subjects', 'SubjectController').apiOnly();
