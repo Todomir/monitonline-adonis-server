@@ -7,11 +7,11 @@ class SubjectMatterSchema extends Schema {
   up () {
     this.create('subject_matters', (table) => {
       table.increments()
-      table
-        .integer('subject_id')
-        .unsigned().notNullable()
+      table.integer('subject_id')
+        .unsigned()
+        .notNullable()
         .references('id')
-        .fromTable('subjects')
+        .inTable('subjects')
         .onUpdate('CASCADE')
         .onDelete('CASCADE')
       table.string('subject_matter_description').notNullable()
