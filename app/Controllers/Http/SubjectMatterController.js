@@ -61,7 +61,7 @@ class SubjectMatterController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async update ({ params, request, response }) {
+  async update ({ params, request }) {
     const subjectMatter = await SubjectMatter.findByOrFail(params.id)
     const data = request.only(['subject_matter_description'])
 
@@ -79,7 +79,9 @@ class SubjectMatterController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async destroy ({ params, request, response }) {
+  async destroy ({ params }) {
+    const subjectMatter = await SubjectMatter.findByOrFail(params.id)
+    await subjectMatter.delete()
   }
 }
 
