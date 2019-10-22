@@ -21,6 +21,11 @@ class UserController {
       }
       return user;
    }
+
+   async show({ params }) {
+      const user = await User.findByOrFail(params.id);
+      return user;
+   }
 }
 
 module.exports = UserController;
