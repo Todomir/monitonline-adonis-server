@@ -6,6 +6,7 @@ const Model = use('Model')
 /** @type {import('@adonisjs/framework/src/Hash')} */
 const Hash = use('Hash')
 
+//referência ao aluno no modelo relacional
 class User extends Model {
   static boot () {
     super.boot()
