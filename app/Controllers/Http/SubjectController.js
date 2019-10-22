@@ -66,7 +66,13 @@ class SubjectController {
    * @param {Response} ctx.response
    */
   async update ({ params, request, response }) {
+    const subject = await Subject.findByOrFail(params.id)
+    const data = request.only(['subject_description'])
     
+    subject.merge(data)
+    await subject.save()
+
+    return subject
   }
 
   /**
