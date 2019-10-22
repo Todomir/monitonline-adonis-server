@@ -3,8 +3,8 @@ const User = use('App/Models/User');
 
 class UserController {
    async index() {
-      const subjectMatters = await SubjectMatter.all();
-      return subjectMatters;
+      const user = await User.all();
+      return user;
    }
 
    async store({ request }) {
@@ -19,7 +19,6 @@ class UserController {
             console.log('You must be a tutor to teach a subject matter.');
          }
       }
-      s;
       return user;
    }
 }
