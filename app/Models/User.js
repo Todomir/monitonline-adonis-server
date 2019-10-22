@@ -37,7 +37,7 @@ class User extends Model {
   }
 
   subjectMatters(){
-    return this.hasMany('App/Models/SubjectMatter')
+    return this.belongsToMany('App/Models/SubjectMatter')
   }
 }
 
