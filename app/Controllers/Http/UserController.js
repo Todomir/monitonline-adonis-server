@@ -23,13 +23,13 @@ class UserController {
    }
 
    async show({ params }) {
-      const user = await User.findByOrFail(params.id);
+      const user = await User.findOrFail(params.id);
       return user;
    }
 
    async update({ request, params }) {
 
-      const user = await User.findByOrFail(params.id);
+      const user = await User.findOrFail(params.id);
       const { name, cpf, email, password, course, is_tutor, subject_matters } = request.post();
 
       user.merge({ name, cpf, email, password, course, is_tutor, subject_matters });
@@ -48,7 +48,7 @@ class UserController {
    }
 
    async destroy({ params }) {
-      const user = await User.findByOrFail(params.id);
+      const user = await User.findOrFail(params.id);
       await user.delete();
    }
 }

@@ -48,7 +48,7 @@ class SubjectController {
     * @param {View} ctx.view
     */
    async show({ params }) {
-      const subject = await Subject.findByOrFail(params.id);
+      const subject = await Subject.findOrFail(params.id);
       return subject;
    }
 
@@ -61,7 +61,7 @@ class SubjectController {
     * @param {Response} ctx.response
     */
    async update({ params, request, response }) {
-      const subject = await Subject.findByOrFail(params.id);
+      const subject = await Subject.findOrFail(params.id);
       const data = request.only(['subject_description']);
 
       subject.merge(data);
@@ -79,7 +79,7 @@ class SubjectController {
     * @param {Response} ctx.response
     */
    async destroy({ params }) {
-      const subject = await Subject.findByOrFail(params.id);
+      const subject = await Subject.findOrFail(params.id);
       await subject.delete();
    }
 }
