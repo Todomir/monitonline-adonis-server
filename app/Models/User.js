@@ -7,17 +7,17 @@ const Model = use('Model')
 const Hash = use('Hash')
 
 //referência ao aluno no modelo relacional
-class Student extends Model {
+class User extends Model {
   static boot () {
     super.boot()
 
     /**
-     * A hook to hash the Student password before saving
+     * A hook to hash the user password before saving
      * it to the database.
      */
-    this.addHook('beforeSave', async (studentInstance) => {
-      if (studentInstance.dirty.password) {
-        studentInstance.password = await Hash.make(studentInstance.password)
+    this.addHook('beforeSave', async (userInstance) => {
+      if (userInstance.dirty.password) {
+        userInstance.password = await Hash.make(userInstance.password)
       }
     })
   }
