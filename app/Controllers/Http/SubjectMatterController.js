@@ -4,6 +4,9 @@
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @typedef {import('@adonisjs/framework/src/View')} View */
 
+/** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
+const SubjectMatter = use('App/Models/SubjectMatter')
+
 /**
  * Resourceful controller for interacting with subjectmatters
  */
@@ -17,7 +20,9 @@ class SubjectMatterController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async index ({ request, response, view }) {
+  async index () {
+    const subjectMatters = await SubjectMatter.all()
+    return subjectMatters
   }
 
   /**
