@@ -2,6 +2,11 @@
 const User = use('App/Models/User');
 
 class UserController {
+   async index() {
+      const subjectMatters = await SubjectMatter.all();
+      return subjectMatters;
+   }
+
    async store({ request }) {
       const { name, cpf, email, password, course, is_tutor, subjectMatters } = request.post();
       const user = await User.create({ name, cpf, email, password, course, is_tutor });
