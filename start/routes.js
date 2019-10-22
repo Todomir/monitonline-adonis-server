@@ -17,3 +17,6 @@
 const Route = use('Route')
 
 Route.post('/store', 'UserController.store')
+Route.group(()=>{
+  Route.resource('subjects', 'SubjectController').apiOnly()
+})
