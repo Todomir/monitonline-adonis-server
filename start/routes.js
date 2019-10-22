@@ -1,5 +1,3 @@
-'use strict'
-
 /*
 |--------------------------------------------------------------------------
 | Routes
@@ -14,14 +12,14 @@
 */
 
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
-const Route = use('Route')
+const Route = use('Route');
 
-Route.post('/store', 'UserController.store')
-
-Route.group(()=>{
-  Route.resource('subjects', 'SubjectController').apiOnly()
-})
+Route.post('/store', 'UserController.store');
 
 Route.group(() => {
-  Route.resource('subjectmatters', 'SubjectMatterController').apiOnly()
-})
+   Route.resource('subjects', 'SubjectController').apiOnly();
+});
+
+Route.group(() => {
+   Route.resource('subjectmatters', 'SubjectMatterController').apiOnly();
+});
