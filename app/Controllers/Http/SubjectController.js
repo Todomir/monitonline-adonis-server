@@ -66,6 +66,7 @@ class SubjectController {
    * @param {Response} ctx.response
    */
   async update ({ params, request, response }) {
+    
   }
 
   /**
@@ -76,7 +77,9 @@ class SubjectController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async destroy ({ params, request, response }) {
+  async destroy ({ params }) {
+    const subject = await Subject.findByOrFail(params.id)
+    await subject.delete()
   }
 }
 
