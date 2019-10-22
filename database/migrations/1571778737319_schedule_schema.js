@@ -4,7 +4,16 @@ const Schema = use('Schema');
 class ScheduleSchema extends Schema {
    up() {
       this.create('schedules', table => {
-         table.increments();
+         table
+            .integer('tutor_id')
+            .unsigned()
+            .notNullable()
+            .references('id')
+            .inTable('users')
+            .onUpdate('CASCADE')
+            .onDelete('CASCADE');
+         table.datetime('schedule_start').notNullable();
+         table.datetime('schedule_end').notNullable();
          table.timestamps();
       });
    }
