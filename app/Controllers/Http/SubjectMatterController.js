@@ -48,7 +48,9 @@ class SubjectMatterController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async show ({ params, request, response, view }) {
+  async show ({ params }) {
+    const subjectMatter = await SubjectMatter.findByOrFail(params.id)
+    return subjectMatter
   }
 
   /**
