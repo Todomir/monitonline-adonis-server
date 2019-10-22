@@ -4,6 +4,9 @@
 const Model = use('Model')
 
 class SubjectMatter extends Model {
+  subject (){
+    return this.belongsTo('App/Model/Subject')
+  }
 }
 
 module.exports = SubjectMatter
