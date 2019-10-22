@@ -37,7 +37,7 @@ class SubjectController {
    */
   
   async store ({ request }) {
-    const data = request.body
+    const data = request.only(['subject_description'])
     const subject = await Subject.create(data)
     return subject
   }
