@@ -83,7 +83,16 @@ class ScheduleController {
     * @param {Request} ctx.request
     * @param {Response} ctx.response
     */
-   async destroy({ params, request, response }) {}
+   async destroy({ params, request, response }) {
+      const schedule = await Schedule.findOrFail(params.id);
+      const data = request.only(['schedule_start', 'schedule_end']);
+
+      if (schedule.tutor_id === auth.user_id) {
+         await schedule.destroy();
+      } else {
+         console.log('User id do not match.');
+      }
+   }
 }
 
 module.exports = ScheduleController;
