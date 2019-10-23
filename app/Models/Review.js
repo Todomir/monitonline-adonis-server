@@ -7,6 +7,10 @@ class Review extends Model {
   user() {
     return this.belongsTo('App/Model/User');
   }
+
+  assistance() {
+    return this.belongsTo('App/Model/Assistance');
+  }
 }
 
 module.exports = Review;
