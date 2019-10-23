@@ -15,7 +15,9 @@ class User extends Model {
        */
       this.addHook('beforeSave', async userInstance => {
          if (userInstance.dirty.password) {
-            userInstance.password = await Hash.make(userInstance.password);
+            userInstance.password = await Hash.make(
+               userInstance.password,
+            );
          }
       });
    }
@@ -35,7 +37,9 @@ class User extends Model {
    }
 
    subjectMatters() {
-      return this.belongsToMany('App/Models/SubjectMatter').pivotTable('users_subject_matters');
+      return this.belongsToMany('App/Models/SubjectMatter').pivotTable(
+         'users_subject_matters',
+      );
    }
 
    schedules() {
