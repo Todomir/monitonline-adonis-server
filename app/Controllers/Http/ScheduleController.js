@@ -2,6 +2,9 @@
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @typedef {import('@adonisjs/framework/src/View')} View */
 
+/** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
+const Schedule = use('App/Models/Schedule');
+
 /**
  * Resourceful controller for interacting with schedules
  */
@@ -15,7 +18,10 @@ class ScheduleController {
     * @param {Response} ctx.response
     * @param {View} ctx.view
     */
-   async index({ request, response, view }) {}
+   async index() {
+      const schedules = Schedule.all();
+      return schedules;
+   }
 
    /**
     * Render a form to be used for creating a new schedule.
