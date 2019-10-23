@@ -37,9 +37,9 @@ class User extends Model {
   }
 
   subjectMatters() {
-    return this.belongsToMany('App/Models/SubjectMatter').pivotTable([
+    return this.belongsToMany('App/Models/SubjectMatter').pivotTable(
       'subject_matters_users',
-    ]);
+    );
   }
 
   schedules() {
