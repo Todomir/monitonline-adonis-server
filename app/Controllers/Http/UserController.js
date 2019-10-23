@@ -48,10 +48,15 @@ class UserController {
       password,
       course,
       is_tutor,
+      subject_matters,
     } = request.post();
 
     user.merge({ name, cpf, email, password, course, is_tutor });
     await user.save();
+
+    if (subject_matters && subject_matters.length > 0) {
+      await user.subjectMatters().attach(subject_matters);
+    }
 
     return user;
   }
