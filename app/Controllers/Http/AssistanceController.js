@@ -4,6 +4,8 @@
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @typedef {import('@adonisjs/framework/src/View')} View */
 
+const Assistance = use('App/Models/Assistance');
+
 /**
  * Resourceful controller for interacting with assistances
  */
@@ -17,7 +19,10 @@ class AssistanceController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async index({ request, response, view }) {}
+  async index() {
+    const assistance = await Assistance.all();
+    return assistance;
+  }
 
   /**
    * Create/save a new assistance.
