@@ -64,7 +64,7 @@ class ScheduleController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async update({ params, auth, request }) {
+  async update({ params, request }) {
     const schedule = await Schedule.findOrFail(params.id);
     const data = request.only(['schedule_start', 'schedule_end']);
 
@@ -82,7 +82,7 @@ class ScheduleController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async destroy({ params, request, response }) {
+  async destroy({ params }) {
     const schedule = await Schedule.findOrFail(params.id);
     await schedule.delete();
   }
