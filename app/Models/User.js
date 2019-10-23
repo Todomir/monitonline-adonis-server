@@ -49,6 +49,10 @@ class User extends Model {
   review() {
     return this.hasOne('App/Models/Review');
   }
+
+  assistance() {
+    return this.hasOne('App/Models/Assistance');
+  }
 }
 
 module.exports = User;
