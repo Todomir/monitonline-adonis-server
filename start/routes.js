@@ -36,3 +36,9 @@ Route.group(() => {
     .apiOnly()
     .middleware(['auth']);
 });
+
+Route.group(() => {
+  Route.resource('reviews', 'ReviewController')
+    .apiOnly()
+    .middleware(['auth']);
+});
