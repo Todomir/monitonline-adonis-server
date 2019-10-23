@@ -27,7 +27,7 @@ Route.group(() => {
 Route.group(() => {
   Route.resource(
     'subjectmatters',
-    'SubjectMatterController',
+    'SubjectMatterController'
   ).apiOnly();
 });
 
@@ -44,6 +44,17 @@ Route.group(() => {
     .middleware(['auth']);
   Route.post(
     '/assistances/:assistance_id/reviews',
-    'ReviewController.store',
+    'ReviewController.store'
+  ).middleware(['auth']);
+});
+
+Route.group(() => {
+  Route.resource('assistances', 'AssistanceController')
+    .apiOnly()
+    .except('store')
+    .middleware(['auth']);
+  Route.post(
+    '/assistances/:tutor_id',
+    'ReviewController.store'
   ).middleware(['auth']);
 });
