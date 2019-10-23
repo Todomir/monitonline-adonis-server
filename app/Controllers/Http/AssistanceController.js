@@ -39,6 +39,7 @@ class AssistanceController {
       tutor_id: params.tutor_id,
       ...data
     });
+
     return assistance;
   }
 
@@ -51,7 +52,10 @@ class AssistanceController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async show({ params, request, response, view }) {}
+  async show({ params }) {
+    const assistance = Assistance.findOrFail(params.id);
+    return assistance;
+  }
 
   /**
    * Update assistance details.
