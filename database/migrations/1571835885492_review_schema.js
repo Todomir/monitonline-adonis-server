@@ -11,7 +11,7 @@ class ReviewSchema extends Schema {
         .unsigned()
         .notNullable()
         .references('id')
-        .inTable('assistance')
+        .inTable('assistances')
         .onUpdate('CASCADE')
         .onDelete('CASCADE');
       table

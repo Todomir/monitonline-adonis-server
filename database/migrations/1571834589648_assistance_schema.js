@@ -26,7 +26,7 @@ class AssistanceSchema extends Schema {
         .unsigned()
         .notNullable()
         .references('id')
-        .inTable('subject_matter')
+        .inTable('subject_matters')
         .onUpdate('CASCADE')
         .onDelete('CASCADE');
       table
