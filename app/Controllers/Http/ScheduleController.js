@@ -33,7 +33,11 @@ class ScheduleController {
     * @param {Request} ctx.request
     * @param {Response} ctx.response
     */
-   async store({ request, response }) {}
+   async store({ request, auth }) {
+      const data = request.only(['schedule_start', 'schedule_end']);
+      const schedule = await Schedule.create({ user_id: auth.user_id, ...data });
+      return schedule;
+   }
 
    /**
     * Display a single schedule.
