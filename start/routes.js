@@ -29,5 +29,5 @@ Route.group(() => {
 });
 
 Route.group(() => {
-   Route.resource('schedules', 'SucheduleController').apiOnly();
+   Route.resource('schedules', 'ScheduleController').apiOnly();
 });
