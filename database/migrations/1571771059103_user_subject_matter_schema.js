@@ -4,6 +4,7 @@ const Schema = use('Schema');
 class UserSubjectMatterSchema extends Schema {
   up() {
     this.create('subject_matters_users', table => {
+      table.increments();
       table
         .integer('subject_matter_id')
         .unsigned()
