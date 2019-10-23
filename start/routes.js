@@ -27,3 +27,7 @@ Route.group(() => {
 Route.group(() => {
    Route.resource('subjectmatters', 'SubjectMatterController').apiOnly();
 });
+
+Route.group(() => {
+   Route.resource('schedule', 'SucheduleController').apiOnly();
+});
