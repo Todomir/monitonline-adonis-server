@@ -65,12 +65,8 @@ class ScheduleController {
       const schedule = await Schedule.findOrFail(params.id);
       const data = request.only(['schedule_start', 'schedule_end']);
 
-      if (schedule.tutor_id === auth.user.id) {
-         schedule.merge(data);
-         await schedule.save();
-      } else {
-         console.log('User id do not match.');
-      }
+      schedule.merge(data);
+      await schedule.save();
 
       return schedule;
    }
@@ -85,13 +81,7 @@ class ScheduleController {
     */
    async destroy({ params, request, response }) {
       const schedule = await Schedule.findOrFail(params.id);
-      const data = request.only(['schedule_start', 'schedule_end']);
-
-      if (schedule.tutor_id === auth.user.id) {
-         await schedule.destroy();
-      } else {
-         console.log('User id do not match.');
-      }
+      await schedule.delete();
    }
 }
 

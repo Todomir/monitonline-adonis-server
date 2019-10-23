@@ -60,7 +60,7 @@ class SubjectController {
     * @param {Request} ctx.request
     * @param {Response} ctx.response
     */
-   async update({ params, request }) {
+   async update({ params, request, response }) {
       const subject = await Subject.findOrFail(params.id);
       const data = request.only(['subject_description']);
 
