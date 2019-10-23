@@ -20,7 +20,6 @@ class UserController {
    }
 
    async update({ request, params }) {
-
       const user = await User.findOrFail(params.id);
       const { name, cpf, email, password, course, is_tutor } = request.post();
 
