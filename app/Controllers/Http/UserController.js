@@ -33,6 +33,12 @@ class UserController {
       const user = await User.findOrFail(params.id);
       await user.delete();
    }
+
+   async authenticate({ request, auth }) {
+      const { email, password } = request.post();
+      const token = await auth.attempt(email, password);
+      return token;
+   }
 }
 
 module.exports = UserController;
