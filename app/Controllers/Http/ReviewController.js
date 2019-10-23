@@ -35,7 +35,14 @@ class ReviewController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async store({ request, response }) {}
+  async store({ request, auth }) {
+    const data = request.only(['review']);
+    const review = await Review.create({
+      user_id: auth.user.id,
+      ...data,
+    });
+    return review;
+  }
 
   /**
    * Display a single review.
