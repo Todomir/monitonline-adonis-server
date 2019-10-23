@@ -66,7 +66,15 @@ class ReviewController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async update({ params, request, response }) {}
+  async update({ params, request }) {
+    const review = await Review.findOrFail(params.id);
+    const data = request.only(['review']);
+
+    review.merge(data);
+    await review.save();
+
+    return review;
+  }
 
   /**
    * Delete a review with id.
