@@ -48,7 +48,10 @@ class ScheduleController {
     * @param {Response} ctx.response
     * @param {View} ctx.view
     */
-   async show({ params, request, response, view }) {}
+   async show({ params }) {
+      const schedule = Schedule.findOrFail(params.id);
+      return schedule;
+   }
 
    /**
     * Update schedule details.
