@@ -4,6 +4,7 @@ const Schema = use('Schema');
 class ScheduleSchema extends Schema {
    up() {
       this.create('schedules', table => {
+         table.increments();
          table
             .integer('tutor_id')
             .unsigned()

@@ -35,7 +35,7 @@ class ScheduleController {
     */
    async store({ request, auth }) {
       const data = request.only(['schedule_start', 'schedule_end']);
-      const schedule = await Schedule.create({ tutor_id: auth.user_id, ...data });
+      const schedule = await Schedule.create({ tutor_id: auth.user.id, ...data });
       return schedule;
    }
 
@@ -65,7 +65,7 @@ class ScheduleController {
       const schedule = await Schedule.findOrFail(params.id);
       const data = request.only(['schedule_start', 'schedule_end']);
 
-      if (schedule.tutor_id === auth.user_id) {
+      if (schedule.tutor_id === auth.user.id) {
          schedule.merge(data);
          await schedule.save();
       } else {
@@ -87,7 +87,7 @@ class ScheduleController {
       const schedule = await Schedule.findOrFail(params.id);
       const data = request.only(['schedule_start', 'schedule_end']);
 
-      if (schedule.tutor_id === auth.user_id) {
+      if (schedule.tutor_id === auth.user.id) {
          await schedule.destroy();
       } else {
          console.log('User id do not match.');
