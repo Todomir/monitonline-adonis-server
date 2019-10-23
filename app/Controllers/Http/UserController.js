@@ -27,7 +27,9 @@ class UserController {
       is_tutor,
     });
 
-    await user.subjectMatters().attach(subject_matters);
+    if (subject_matters && subject_matters.length > 0) {
+      await user.subjectMatters().attach(subject_matters);
+    }
 
     return user;
   }
