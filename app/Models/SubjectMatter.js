@@ -11,6 +11,10 @@ class SubjectMatter extends Model {
       'users_subject_matters',
     );
   }
+
+  assistance() {
+    return this.hasMany('App/Model/Assistance');
+  }
 }
 
 module.exports = SubjectMatter;
