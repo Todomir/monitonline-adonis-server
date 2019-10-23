@@ -45,5 +45,5 @@ Route.group(() => {
   Route.post(
     '/assistances/:assistance_id/reviews',
     'ReviewController.store',
-  );
+  ).middleware(['auth']);
 });
