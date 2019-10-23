@@ -53,7 +53,10 @@ class ReviewController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async show({ params, request, response, view }) {}
+  async show({ params }) {
+    const review = Review.findOrFail(params.id);
+    return review;
+  }
 
   /**
    * Update review details.
