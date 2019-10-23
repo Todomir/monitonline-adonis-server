@@ -65,7 +65,20 @@ class AssistanceController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async update({ params, request, response }) {}
+  async update({ params, request }) {
+    const assistance = await Assistance.findOrFail(params.id);
+    const data = request.only([
+      'student_id',
+      'tutor_id',
+      'subject_matter_id',
+      'schedule_id'
+    ]);
+
+    assistance.merge(data);
+    await assistance.save();
+
+    return assistance;
+  }
 
   /**
    * Delete a assistance with id.
