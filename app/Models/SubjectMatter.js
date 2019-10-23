@@ -13,7 +13,7 @@ class SubjectMatter extends Model {
   }
 
   assistance() {
-    return this.hasMany('App/Model/Assistance');
+    return this.hasMany('App/Models/Assistance');
   }
 }
 
