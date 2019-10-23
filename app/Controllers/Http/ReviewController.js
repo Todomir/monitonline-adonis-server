@@ -5,7 +5,7 @@
 /** @typedef {import('@adonisjs/framework/src/View')} View */
 
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
-const Schedule = use('App/Models/Schedule');
+const Review = use('App/Models/Schedule');
 
 /**
  * Resourceful controller for interacting with reviews
@@ -21,10 +21,10 @@ class ReviewController {
    * @param {View} ctx.view
    */
   async index() {
-    const schedules = await Schedule.query()
+    const reviews = await Review.query()
       .with('user')
       .fetch();
-    return schedules;
+    return reviews;
   }
 
   /**
