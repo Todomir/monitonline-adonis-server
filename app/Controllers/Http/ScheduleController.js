@@ -35,7 +35,7 @@ class ScheduleController {
     */
    async store({ request, auth }) {
       const data = request.only(['schedule_start', 'schedule_end']);
-      const schedule = await Schedule.create({ user_id: auth.user_id, ...data });
+      const schedule = await Schedule.create({ tutor_id: auth.user_id, ...data });
       return schedule;
    }
 
