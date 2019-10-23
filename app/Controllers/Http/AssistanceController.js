@@ -32,7 +32,15 @@ class AssistanceController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async store({ request, response }) {}
+  async store({ request, auth, params }) {
+    const data = request.only(['subject_matter_id', 'schedule_id']);
+    const assistance = await Assistance.create({
+      student_id: auth.user.id,
+      tutor_id: params.tutor_id,
+      ...data
+    });
+    return assistance;
+  }
 
   /**
    * Display a single assistance.
