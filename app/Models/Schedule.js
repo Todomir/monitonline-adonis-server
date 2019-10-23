@@ -5,6 +5,10 @@ class Schedule extends Model {
   user() {
     return this.belongsTo('App/Models/User');
   }
+
+  assistance() {
+    return this.hasOne('App/Models/Assistance');
+  }
 }
 
 module.exports = Schedule;
