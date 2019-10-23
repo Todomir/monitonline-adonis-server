@@ -61,7 +61,19 @@ class ScheduleController {
     * @param {Request} ctx.request
     * @param {Response} ctx.response
     */
-   async update({ params, request, response }) {}
+   async update({ params, auth, request }) {
+      const schedule = await Schedule.findOrFail(params.id);
+      const data = request.only(['schedule_start', 'schedule_end']);
+
+      if (schedule.tutor_id === auth.user_id) {
+         schedule.merge(data);
+         await schedule.save();
+      } else {
+         console.log('User id do not match.');
+      }
+
+      return schedule;
+   }
 
    /**
     * Delete a schedule with id.
