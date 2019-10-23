@@ -29,5 +29,7 @@ Route.group(() => {
 });
 
 Route.group(() => {
-   Route.resource('schedules', 'ScheduleController').apiOnly();
+   Route.resource('schedules', 'ScheduleController')
+      .apiOnly()
+      .middleware(['auth']);
 });
