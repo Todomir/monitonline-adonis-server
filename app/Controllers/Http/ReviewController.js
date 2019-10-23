@@ -84,7 +84,10 @@ class ReviewController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async destroy({ params }) {}
+  async destroy({ params }) {
+    const review = await Review.findOrFail(params.id);
+    await review.delete();
+  }
 }
 
 module.exports = ReviewController;
