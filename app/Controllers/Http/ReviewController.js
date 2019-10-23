@@ -35,10 +35,10 @@ class ReviewController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async store({ request, auth }) {
+  async store({ request, auth, params }) {
     const data = request.only(['review']);
     const review = await Review.create({
-      user_id: auth.user.id,
+      user_id: auth.user.id, assistance_id: params.assistance_id
       ...data,
     });
     return review;

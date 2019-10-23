@@ -38,7 +38,12 @@ Route.group(() => {
 });
 
 Route.group(() => {
-  Route.resource('reviews', 'ReviewController')
+  Route.resource('assistances/reviews', 'ReviewController')
     .apiOnly()
+    .except('store')
     .middleware(['auth']);
+  Route.post(
+    '/assistances/:assistance_id/reviews',
+    'ReviewController.store',
+  );
 });
