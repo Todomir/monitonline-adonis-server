@@ -55,6 +55,6 @@ Route.group(() => {
     .middleware(['auth']);
   Route.post(
     '/assistances/:tutor_id',
-    'ReviewController.store'
+    'AssistanceController.store'
   ).middleware(['auth']);
 });
