@@ -17,19 +17,22 @@ const Route = use('Route');
 Route.post('/users/auth', 'UserController.authenticate');
 
 Route.group(() => {
-   Route.resource('users', 'UserController').apiOnly();
+  Route.resource('users', 'UserController').apiOnly();
 });
 
 Route.group(() => {
-   Route.resource('subjects', 'SubjectController').apiOnly();
+  Route.resource('subjects', 'SubjectController').apiOnly();
 });
 
 Route.group(() => {
-   Route.resource('subjectmatters', 'SubjectMatterController').apiOnly();
+  Route.resource(
+    'subjectmatters',
+    'SubjectMatterController',
+  ).apiOnly();
 });
 
 Route.group(() => {
-   Route.resource('schedules', 'ScheduleController')
-      .apiOnly()
-      .middleware(['auth']);
+  Route.resource('schedules', 'ScheduleController')
+    .apiOnly()
+    .middleware(['auth']);
 });

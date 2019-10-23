@@ -1,5 +1,5 @@
 module.exports = {
-   /*
+  /*
   |--------------------------------------------------------------------------
   | JSON Parser
   |--------------------------------------------------------------------------
@@ -8,8 +8,8 @@ module.exports = {
   | If you want body parser to ignore JSON payloads, then simply set `types`
   | to an empty array.
   */
-   json: {
-      /*
+  json: {
+    /*
     |--------------------------------------------------------------------------
     | limit
     |--------------------------------------------------------------------------
@@ -18,9 +18,9 @@ module.exports = {
     | is over 1mb it will not be processed.
     |
     */
-      limit: '1mb',
+    limit: '1mb',
 
-      /*
+    /*
     |--------------------------------------------------------------------------
     | strict
     |--------------------------------------------------------------------------
@@ -29,9 +29,9 @@ module.exports = {
     | Object. Otherwise everything parseable by `JSON.parse` is parsed.
     |
     */
-      strict: true,
+    strict: true,
 
-      /*
+    /*
     |--------------------------------------------------------------------------
     | types
     |--------------------------------------------------------------------------
@@ -41,10 +41,15 @@ module.exports = {
     | by `JSON.parse` method.
     |
     */
-      types: ['application/json', 'application/json-patch+json', 'application/vnd.api+json', 'application/csp-report'],
-   },
+    types: [
+      'application/json',
+      'application/json-patch+json',
+      'application/vnd.api+json',
+      'application/csp-report',
+    ],
+  },
 
-   /*
+  /*
   |--------------------------------------------------------------------------
   | Raw Parser
   |--------------------------------------------------------------------------
@@ -52,11 +57,11 @@ module.exports = {
   |
   |
   */
-   raw: {
-      types: ['text/*'],
-   },
+  raw: {
+    types: ['text/*'],
+  },
 
-   /*
+  /*
   |--------------------------------------------------------------------------
   | Form Parser
   |--------------------------------------------------------------------------
@@ -64,11 +69,11 @@ module.exports = {
   |
   |
   */
-   form: {
-      types: ['application/x-www-form-urlencoded'],
-   },
+  form: {
+    types: ['application/x-www-form-urlencoded'],
+  },
 
-   /*
+  /*
   |--------------------------------------------------------------------------
   | Files Parser
   |--------------------------------------------------------------------------
@@ -76,10 +81,10 @@ module.exports = {
   |
   |
   */
-   files: {
-      types: ['multipart/form-data'],
+  files: {
+    types: ['multipart/form-data'],
 
-      /*
+    /*
     |--------------------------------------------------------------------------
     | Max Size
     |--------------------------------------------------------------------------
@@ -94,9 +99,9 @@ module.exports = {
     | Also this value is considered when `autoProcess` is set to true.
     |
     */
-      maxSize: '20mb',
+    maxSize: '20mb',
 
-      /*
+    /*
     |--------------------------------------------------------------------------
     | Auto Process
     |--------------------------------------------------------------------------
@@ -108,9 +113,9 @@ module.exports = {
     | This value can contain a boolean or an array of route patterns
     | to be autoprocessed.
     */
-      autoProcess: true,
+    autoProcess: true,
 
-      /*
+    /*
     |--------------------------------------------------------------------------
     | Process Manually
     |--------------------------------------------------------------------------
@@ -120,9 +125,9 @@ module.exports = {
     | is to true. Otherwise everything is processed manually.
     |
     */
-      processManually: [],
+    processManually: [],
 
-      /*
+    /*
     |--------------------------------------------------------------------------
     | Temporary file name
     |--------------------------------------------------------------------------
@@ -140,5 +145,5 @@ module.exports = {
     | }
     |
     */
-   },
+  },
 };
