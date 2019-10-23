@@ -4,6 +4,9 @@
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @typedef {import('@adonisjs/framework/src/View')} View */
 
+/** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
+const Schedule = use('App/Models/Schedule');
+
 /**
  * Resourceful controller for interacting with reviews
  */
@@ -17,7 +20,12 @@ class ReviewController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async index({ request, response, view }) {}
+  async index() {
+    const schedules = await Schedule.query()
+      .with('user')
+      .fetch();
+    return schedules;
+  }
 
   /**
    * Create/save a new review.
