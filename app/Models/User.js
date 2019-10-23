@@ -45,6 +45,10 @@ class User extends Model {
   schedules() {
     return this.hasMany('App/Models/Schedule');
   }
+
+  review() {
+    return this.hasOne('App/Model/Review');
+  }
 }
 
 module.exports = User;
