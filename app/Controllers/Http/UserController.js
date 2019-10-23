@@ -15,7 +15,9 @@ class UserController {
       password,
       course,
       is_tutor,
+      subject_matters,
     } = request.post();
+
     const user = await User.create({
       name,
       cpf,
@@ -24,6 +26,8 @@ class UserController {
       course,
       is_tutor,
     });
+
+    await user.subjectMatters().attach(subject_matters);
 
     return user;
   }

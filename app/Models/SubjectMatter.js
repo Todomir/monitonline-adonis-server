@@ -7,9 +7,9 @@ class SubjectMatter extends Model {
   }
 
   users() {
-    return this.belongsToMany('App/Models/User').pivotTable(
-      'users_subject_matters',
-    );
+    return this.belongsToMany('App/Models/User').pivotTable([
+      'subject_matters_users',
+    ]);
   }
 
   assistance() {
