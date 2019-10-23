@@ -19,7 +19,9 @@ class ScheduleController {
     * @param {View} ctx.view
     */
    async index() {
-      const schedules = Schedule.all();
+      const schedules = await Schedule.query()
+         .with('user')
+         .fetch();
       return schedules;
    }
 
