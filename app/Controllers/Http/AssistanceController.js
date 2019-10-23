@@ -20,17 +20,6 @@ class AssistanceController {
   async index({ request, response, view }) {}
 
   /**
-   * Render a form to be used for creating a new assistance.
-   * GET assistances/create
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
-   */
-  async create({ request, response, view }) {}
-
-  /**
    * Create/save a new assistance.
    * POST assistances
    *
@@ -50,17 +39,6 @@ class AssistanceController {
    * @param {View} ctx.view
    */
   async show({ params, request, response, view }) {}
-
-  /**
-   * Render a form to update an existing assistance.
-   * GET assistances/:id/edit
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
-   */
-  async edit({ params, request, response, view }) {}
 
   /**
    * Update assistance details.
