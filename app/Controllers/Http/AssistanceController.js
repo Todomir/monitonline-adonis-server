@@ -20,8 +20,8 @@ class AssistanceController {
    * @param {View} ctx.view
    */
   async index() {
-    const assistance = await Assistance.all();
-    return assistance;
+    const assistances = await Assistance.all();
+    return assistances;
   }
 
   /**
@@ -88,7 +88,10 @@ class AssistanceController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async destroy({ params, request, response }) {}
+  async destroy({ params }) {
+    const assistance = await Assistance.findOrFail(params.id);
+    await assistance.delete();
+  }
 }
 
 module.exports = AssistanceController;
