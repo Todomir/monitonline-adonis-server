@@ -29,6 +29,14 @@ class AssistanceSchema extends Schema {
         .inTable('subject_matter')
         .onUpdate('CASCADE')
         .onDelete('CASCADE');
+      table
+        .integer('schedule_id')
+        .unsigned()
+        .notNullable()
+        .references('id')
+        .inTable('schedules')
+        .onUpdate('CASCADE')
+        .onDelete('CASCADE');
       table.timestamps();
     });
   }
