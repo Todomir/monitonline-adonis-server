@@ -5,11 +5,11 @@ const Model = use('Model');
 
 class Review extends Model {
   user() {
-    return this.belongsTo('App/Model/User');
+    return this.belongsTo('App/Models/User');
   }
 
   assistance() {
-    return this.belongsTo('App/Model/Assistance');
+    return this.belongsTo('App/Models/Assistance');
   }
 }
 

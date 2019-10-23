@@ -47,7 +47,7 @@ class User extends Model {
   }
 
   review() {
-    return this.hasOne('App/Model/Review');
+    return this.hasOne('App/Models/Review');
   }
 }
 
