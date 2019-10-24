@@ -16,6 +16,10 @@ class Assistance extends Model {
   schedule() {
     return this.belongsTo('App/Models/Schedule');
   }
+
+  comments() {
+    return this.hasMany('App/Models/Comment');
+  }
 }
 
 module.exports = Assistance;
