@@ -35,7 +35,15 @@ class CommentController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async store({ request, response }) {}
+  async store({ request, auth }) {
+    const { content } = request.post();
+    const comment = await Comment.create({
+      user_id: auth.user.id,
+      assistance_id: params.assistance_id,
+      content
+    });
+    return comment;
+  }
 
   /**
    * Display a single comment.
