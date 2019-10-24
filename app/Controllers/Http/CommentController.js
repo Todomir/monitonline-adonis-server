@@ -54,7 +54,10 @@ class CommentController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async show({ params, request, response, view }) {}
+  async show({ params }) {
+    const comment = Comment.findOrFail(params.id);
+    return comment;
+  }
 
   /**
    * Update comment details.
