@@ -85,7 +85,10 @@ class CommentController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async destroy({ params, request, response }) {}
+  async destroy({ params }) {
+    const comment = Comment.findOrFail(params.id);
+    await comment.delete();
+  }
 }
 
 module.exports = CommentController;
