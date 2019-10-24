@@ -58,3 +58,14 @@ Route.group(() => {
     'AssistanceController.store'
   ).middleware(['auth']);
 });
+
+Route.group(() => {
+  Route.resource('comments', 'CommentController')
+    .apiOnly()
+    .except('store')
+    .middleware(['auth']);
+  Route.post(
+    '/comments/:assistance_id',
+    'CommentController.store'
+  ).middleware(['auth']);
+});
