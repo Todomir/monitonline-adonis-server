@@ -7,6 +7,10 @@ class Comment extends Model {
   assistance() {
     return this.belongsTo('App/Models/Assistance');
   }
+
+  user() {
+    return this.belongsTo('App/Models/User');
+  }
 }
 
 module.exports = Comment;
