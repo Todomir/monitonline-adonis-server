@@ -67,7 +67,15 @@ class CommentController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async update({ params, request, response }) {}
+  async update({ params, request, response }) {
+    const comment = await Comment.findOrFail(params.id);
+    const { content } = request.post();
+
+    comment.merge(content);
+    await comment.save();
+
+    return comment;
+  }
 
   /**
    * Delete a comment with id.
