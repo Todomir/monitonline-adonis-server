@@ -14,7 +14,7 @@ module.exports = {
   | Function - Receives the current origin and should return one of the above values.
   |
   */
-  origin: false,
+  origin: true,
 
   /*
   |--------------------------------------------------------------------------
@@ -81,5 +81,5 @@ module.exports = {
   | Define Access-Control-Allow-Max-Age
   |
   */
-  maxAge: 90,
+  maxAge: 90
 };
