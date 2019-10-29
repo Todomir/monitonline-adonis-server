@@ -6,10 +6,7 @@ class UserSchema extends Schema {
   up() {
     this.create('users', table => {
       table.increments();
-      table
-        .string('name')
-        .notNullable()
-        .unique();
+      table.string('name').notNullable();
       table
         .string('cpf')
         .notNullable()

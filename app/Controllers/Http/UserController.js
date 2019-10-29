@@ -15,7 +15,7 @@ class UserController {
       password,
       course,
       is_tutor,
-      subject_matters,
+      subject_matters
     } = request.post();
 
     const user = await User.create({
@@ -24,7 +24,7 @@ class UserController {
       email,
       password,
       course,
-      is_tutor,
+      is_tutor
     });
 
     if (subject_matters && subject_matters.length > 0) {
@@ -48,7 +48,7 @@ class UserController {
       password,
       course,
       is_tutor,
-      subject_matters,
+      subject_matters
     } = request.post();
 
     user.merge({ name, cpf, email, password, course, is_tutor });
