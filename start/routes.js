@@ -29,6 +29,10 @@ Route.group(() => {
     'subjectmatters',
     'SubjectMatterController'
   ).apiOnly();
+  Route.post(
+    '/subjects/subjectmatters',
+    'SubjectMatterController.fetchBySubjectId'
+  );
 });
 
 Route.group(() => {
