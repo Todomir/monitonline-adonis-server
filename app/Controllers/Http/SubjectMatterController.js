@@ -25,9 +25,11 @@ class SubjectMatterController {
 
   async fetchBySubjectId({ request }) {
     const { subject_id } = request.post();
-    const subjectMatters = await SubjectMatter.select('*')
-      .from('subject_matters')
-      .where({ subject_id });
+
+    const subjectMatters = SubjectMatter.query()
+      .whereIn('subject_id', subject_id)
+      .fetch();
+
     return subjectMatters;
   }
 
