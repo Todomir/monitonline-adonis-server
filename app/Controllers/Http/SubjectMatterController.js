@@ -23,6 +23,14 @@ class SubjectMatterController {
     return subjectMatters;
   }
 
+  async fetchBySubjectId({ request }) {
+    const { subject_id } = request.post();
+    const subjectMatters = await SubjectMatter.select('*')
+      .from('subject_matters')
+      .where({ subject_id });
+    return subjectMatters;
+  }
+
   /**
    * Create/save a new subjectmatter.
    * POST subjectmatters
@@ -34,7 +42,7 @@ class SubjectMatterController {
   async store({ request }) {
     const data = request.only([
       'subject_matter_description',
-      'subject_id',
+      'subject_id'
     ]);
     const subjectMatter = await SubjectMatter.create(data);
     return subjectMatter;
