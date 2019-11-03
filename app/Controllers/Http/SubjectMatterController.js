@@ -19,7 +19,10 @@ class SubjectMatterController {
    * @param {View} ctx.view
    */
   async index() {
-    const subjectMatters = await SubjectMatter.all();
+    const subjectMatters = await SubjectMatter.query()
+      .with('subject')
+      .fetch();
+
     return subjectMatters;
   }
 
