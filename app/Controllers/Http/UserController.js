@@ -71,6 +71,11 @@ class UserController {
     const token = await auth.attempt(email, password);
     return token;
   }
+
+  async getAuthenticadedUser({ auth }) {
+    const user = await auth.getUser();
+    return user;
+  }
 }
 
 module.exports = UserController;
