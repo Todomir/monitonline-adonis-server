@@ -15,6 +15,10 @@
 const Route = use('Route');
 
 Route.post('/users/auth', 'UserController.authenticate');
+Route.get(
+  '/users/auth/getUser',
+  'UserController.getAuthenticadedUser'
+);
 
 Route.group(() => {
   Route.resource('users', 'UserController').apiOnly();
