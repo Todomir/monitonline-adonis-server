@@ -18,7 +18,7 @@ Route.post('/users/auth', 'UserController.authenticate');
 Route.get(
   '/users/auth/getUser',
   'UserController.getAuthenticadedUser'
-);
+).middleware(['auth']);
 
 Route.group(() => {
   Route.resource('users', 'UserController').apiOnly();
