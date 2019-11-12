@@ -37,7 +37,7 @@ class ScheduleController {
     const data = request.only(['schedule_start', 'schedule_end']);
     const schedule = await Schedule.create({
       tutor_id: auth.user.id,
-      ...data,
+      ...data
     });
     return schedule;
   }
@@ -54,6 +54,13 @@ class ScheduleController {
   async show({ params }) {
     const schedule = Schedule.findOrFail(params.id);
     return schedule;
+  }
+
+  async fetchByUserId({ params }) {
+    const schedules = Schedule.query()
+      .where('tutor_id', params.tutor_id)
+      .fetch();
+    return schedules;
   }
 
   /**

@@ -43,6 +43,10 @@ Route.group(() => {
   Route.resource('schedules', 'ScheduleController')
     .apiOnly()
     .middleware(['auth']);
+  Route.get(
+    '/users/schedules/:tutor_id',
+    'ScheduleController.fetchByUserId'
+  );
 });
 
 Route.group(() => {
