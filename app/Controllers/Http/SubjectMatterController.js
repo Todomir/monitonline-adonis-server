@@ -29,21 +29,22 @@ class SubjectMatterController {
   async fetchBySubjectId({ request }) {
     const { subject_id } = request.post();
 
-    const subjectMatters = SubjectMatter.query()
+    const subjectMatters = await SubjectMatter.query()
       .whereIn('subject_id', subject_id)
       .fetch();
 
     return subjectMatters;
   }
 
-  async fetchBySubjectMatterDescription({ request }) {
+  async fetchUsersBySubjectMatterDescription({ request }) {
     const { subject_matter_description } = request.post();
 
-    const subjectMatters = SubjectMatter.query()
+    const users = await SubjectMatter.query()
+      .with('users')
       .where('subject_matter_description', subject_matter_description)
       .fetch();
 
-    return subjectMatters;
+    return users;
   }
 
   /**

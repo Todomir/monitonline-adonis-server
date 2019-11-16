@@ -14,14 +14,14 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route');
 
-Route.post('/users/auth', 'UserController.authenticate');
-Route.get(
-  '/users/auth/getUser',
-  'UserController.getAuthenticadedUser'
-).middleware(['auth']);
-
 Route.group(() => {
   Route.resource('users', 'UserController').apiOnly();
+
+  Route.post('/users/auth', 'UserController.authenticate');
+  Route.get(
+    '/users/auth/getUser',
+    'UserController.getAuthenticadedUser'
+  ).middleware(['auth']);
 });
 
 Route.group(() => {
@@ -38,8 +38,8 @@ Route.group(() => {
     'SubjectMatterController.fetchBySubjectId'
   );
   Route.post(
-    'subjectmatters/fetchByDescription',
-    'SubjectMatterController.fetchBySubjectMatterDescription'
+    'subjectmatters/fetchUsersByDescription',
+    'SubjectMatterController.fetchUsersBySubjectMatterDescription'
   );
 });
 
