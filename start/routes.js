@@ -41,10 +41,6 @@ Route.group(() => {
     '/subjects/subjectmatters',
     'SubjectMatterController.fetchBySubjectId'
   );
-  Route.post(
-    'subjectmatters/fetchUsersByDescription',
-    'SubjectMatterController.fetchUsersBySubjectMatterDescription'
-  );
 });
 
 Route.group(() => {
