@@ -37,6 +37,10 @@ Route.group(() => {
     '/subjects/subjectmatters',
     'SubjectMatterController.fetchBySubjectId'
   );
+  Route.post(
+    'subjectmatters/fetchByDescription',
+    'SubjectMatterController.fetchBySubjectMatterDescription'
+  );
 });
 
 Route.group(() => {

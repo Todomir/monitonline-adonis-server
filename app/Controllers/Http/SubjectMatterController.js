@@ -36,6 +36,19 @@ class SubjectMatterController {
     return subjectMatters;
   }
 
+  async fetchBySubjectMatterDescription({ request }) {
+    const { subject_matter_description } = request.post();
+
+    const subjectMatters = SubjectMatter.query()
+      .whereIn(
+        'subject_matter_description',
+        subject_matter_description
+      )
+      .fetch();
+
+    return subjectMatters;
+  }
+
   /**
    * Create/save a new subjectmatter.
    * POST subjectmatters
