@@ -40,10 +40,7 @@ class SubjectMatterController {
     const { subject_matter_description } = request.post();
 
     const subjectMatters = SubjectMatter.query()
-      .whereIn(
-        'subject_matter_description',
-        subject_matter_description
-      )
+      .where('subject_matter_description', subject_matter_description)
       .fetch();
 
     return subjectMatters;
