@@ -36,17 +36,6 @@ class SubjectMatterController {
     return subjectMatters;
   }
 
-  async fetchUsersBySubjectMatterDescription({ request }) {
-    const { subject_matter_description } = request.post();
-
-    const users = await SubjectMatter.query()
-      .with('users')
-      .where('subject_matter_description', subject_matter_description)
-      .fetch();
-
-    return users;
-  }
-
   /**
    * Create/save a new subjectmatter.
    * POST subjectmatters

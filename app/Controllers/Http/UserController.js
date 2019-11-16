@@ -76,6 +76,21 @@ class UserController {
     const user = await auth.getUser();
     return user;
   }
+
+  async fetchUsersBySubjectMatterDescription({ request }) {
+    const { subject_matter_description } = request.post();
+
+    const users = await User.query()
+      .whereHas('subjectMatters', subjectMattersQuery => {
+        subjectMattersQuery.where(
+          'subject_matter_description',
+          subject_matter_description
+        );
+      })
+      .fetch();
+
+    return users;
+  }
 }
 
 module.exports = UserController;

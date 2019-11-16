@@ -18,6 +18,10 @@ Route.group(() => {
   Route.resource('users', 'UserController').apiOnly();
 
   Route.post('/users/auth', 'UserController.authenticate');
+  Route.post(
+    '/users/fetchUsersByDescription',
+    'UserController.fetchUsersBySubjectMatterDescription'
+  );
   Route.get(
     '/users/auth/getUser',
     'UserController.getAuthenticadedUser'
