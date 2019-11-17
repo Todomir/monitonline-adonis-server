@@ -87,6 +87,7 @@ class UserController {
           subject_matter_description
         );
       })
+      .with('subjectMatters')
       .fetch();
 
     return users;
