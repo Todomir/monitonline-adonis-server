@@ -57,6 +57,14 @@ class AssistanceController {
     return assistance;
   }
 
+  async getAssistanceByUserId({ params }) {
+    const tutor_id = params.tutor_id;
+    const assistances = await Assistance.query()
+      .where(tutor_id)
+      .fetch();
+    return assistances;
+  }
+
   /**
    * Update assistance details.
    * PUT or PATCH assistances/:id
