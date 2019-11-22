@@ -60,7 +60,7 @@ class AssistanceController {
   async getAssistanceByUserId({ params }) {
     const tutor_id = params.tutor_id;
     const assistances = await Assistance.query()
-      .where(tutor_id)
+      .where('tutor_id', tutor_id)
       .fetch();
     return assistances;
   }
