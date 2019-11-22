@@ -1,5 +1,3 @@
-'use strict';
-
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @typedef {import('@adonisjs/framework/src/View')} View */
@@ -37,7 +35,7 @@ class AssistanceController {
     const assistance = await Assistance.create({
       student_id: auth.user.id,
       tutor_id: params.tutor_id,
-      ...data
+      ...data,
     });
 
     return assistance;
@@ -58,10 +56,14 @@ class AssistanceController {
   }
 
   async getAssistanceByUserId({ params }) {
-    const tutor_id = params.tutor_id;
+    const id = params.tutor_id;
+
     const assistances = await Assistance.query()
-      .where('tutor_id', tutor_id)
+      .with('student')
+      .with('schedule')
+      .where('tutor_id', id)
       .fetch();
+
     return assistances;
   }
 
@@ -75,12 +77,7 @@ class AssistanceController {
    */
   async update({ params, request }) {
     const assistance = await Assistance.findOrFail(params.id);
-    const data = request.only([
-      'student_id',
-      'tutor_id',
-      'subject_matter_id',
-      'schedule_id'
-    ]);
+    const data = request.only(['student_id', 'tutor_id', 'subject_matter_id', 'schedule_id']);
 
     assistance.merge(data);
     await assistance.save();
