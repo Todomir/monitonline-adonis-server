@@ -73,6 +73,10 @@ Route.group(() => {
     '/assistances/:tutor_id',
     'AssistanceController.store'
   ).middleware(['auth']);
+  Route.get(
+    '/user/assistances/:tutor_id',
+    'AssistanceController.getAssistanceByUserId'
+  );
 });
 
 Route.group(() => {
