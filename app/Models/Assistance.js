@@ -23,7 +23,7 @@ class Assistance extends Model {
   }
 
   status() {
-    return this.belongsTo('App/Models/Status');
+    return this.belongsTo('App/Models/Status', 'status_id', 'id');
   }
 }
 

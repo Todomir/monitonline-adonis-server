@@ -3,7 +3,7 @@ const Model = use('Model');
 
 class Status extends Model {
   assistance() {
-    return this.hasOne('App/Models/Assistance');
+    return this.hasOne('App/Models/Assistance', 'id', 'status_id');
   }
 }
 
