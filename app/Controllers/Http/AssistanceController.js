@@ -78,19 +78,9 @@ class AssistanceController {
    */
   async update({ params, request }) {
     const assistance = await Assistance.findOrFail(params.id);
-    const data = request.only(['student_id', 'tutor_id', 'subject_matter_id', 'schedule_id']);
+    const data = request.only(['student_id', 'tutor_id', 'subject_matter_id', 'schedule_id', 'status_id']);
 
     assistance.merge(data);
-    await assistance.save();
-
-    return assistance;
-  }
-
-  async updateStatus({ params, request }) {
-    const assistance = await Assistance.findOrFail(params.id);
-    const { status_id } = request.all;
-
-    assistance.merge(status_id);
     await assistance.save();
 
     return assistance;

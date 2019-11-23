@@ -52,7 +52,6 @@ Route.group(() => {
     .except('store')
     .middleware(['auth']);
   Route.post('/assistances/:tutor_id', 'AssistanceController.store').middleware(['auth']);
-  Route.put('/assistances/:id/status', 'AssistanceController.updateStatus');
   Route.get('/user/assistances/:tutor_id', 'AssistanceController.getAssistanceByUserId');
 });
 
