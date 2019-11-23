@@ -21,6 +21,10 @@ class Assistance extends Model {
   comments() {
     return this.hasMany('App/Models/Comment');
   }
+
+  status() {
+    return this.belongsTo('App/Models/Status');
+  }
 }
 
 module.exports = Assistance;
