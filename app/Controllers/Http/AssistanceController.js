@@ -88,9 +88,9 @@ class AssistanceController {
 
   async updateStatus({ params, request }) {
     const assistance = await Assistance.findOrFail(params.id);
-    const data = request.only(['status_id']);
+    const { status_id } = request.all;
 
-    assistance.merge(data);
+    assistance.merge(status_id);
     await assistance.save();
 
     return assistance;
