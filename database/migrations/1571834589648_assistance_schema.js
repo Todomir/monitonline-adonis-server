@@ -5,6 +5,7 @@ class AssistanceSchema extends Schema {
   up() {
     this.create('assistances', table => {
       table.increments();
+
       table
         .integer('tutor_id')
         .unsigned()
@@ -13,6 +14,7 @@ class AssistanceSchema extends Schema {
         .inTable('schedules')
         .onUpdate('CASCADE')
         .onDelete('CASCADE');
+
       table
         .integer('student_id')
         .unsigned()
@@ -21,6 +23,7 @@ class AssistanceSchema extends Schema {
         .inTable('users')
         .onUpdate('CASCADE')
         .onDelete('CASCADE');
+
       table
         .integer('subject_matter_id')
         .unsigned()
@@ -29,6 +32,7 @@ class AssistanceSchema extends Schema {
         .inTable('subject_matters')
         .onUpdate('CASCADE')
         .onDelete('CASCADE');
+
       table
         .integer('schedule_id')
         .unsigned()
@@ -37,8 +41,7 @@ class AssistanceSchema extends Schema {
         .inTable('schedules')
         .onUpdate('CASCADE')
         .onDelete('CASCADE');
-      table.timestamps();
-    });
+
       table
         .integer('status_id')
         .unsigned()
@@ -47,6 +50,7 @@ class AssistanceSchema extends Schema {
         .inTable('status')
         .onUpdate('CASCADE')
         .onDelete('CASCADE');
+
       table.timestamps();
     });
   }
