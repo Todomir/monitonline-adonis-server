@@ -18,14 +18,8 @@ Route.group(() => {
   Route.resource('users', 'UserController').apiOnly();
 
   Route.post('/users/auth', 'UserController.authenticate');
-  Route.post(
-    '/users/fetchUsersByDescription',
-    'UserController.fetchUsersBySubjectMatterDescription'
-  );
-  Route.get(
-    '/users/auth/getUser',
-    'UserController.getAuthenticadedUser'
-  ).middleware(['auth']);
+  Route.post('/users/fetchUsersByDescription', 'UserController.fetchUsersBySubjectMatterDescription');
+  Route.get('/users/auth/getUser', 'UserController.getAuthenticadedUser').middleware(['auth']);
 });
 
 Route.group(() => {
@@ -33,24 +27,15 @@ Route.group(() => {
 });
 
 Route.group(() => {
-  Route.resource(
-    'subjectmatters',
-    'SubjectMatterController'
-  ).apiOnly();
-  Route.post(
-    '/subjects/subjectmatters',
-    'SubjectMatterController.fetchBySubjectId'
-  );
+  Route.resource('subjectmatters', 'SubjectMatterController').apiOnly();
+  Route.post('/subjects/subjectmatters', 'SubjectMatterController.fetchBySubjectId');
 });
 
 Route.group(() => {
   Route.resource('schedules', 'ScheduleController')
     .apiOnly()
     .middleware(['auth']);
-  Route.get(
-    '/users/schedules/:tutor_id',
-    'ScheduleController.fetchByUserId'
-  );
+  Route.get('/users/schedules/:tutor_id', 'ScheduleController.fetchByUserId');
 });
 
 Route.group(() => {
@@ -58,10 +43,7 @@ Route.group(() => {
     .apiOnly()
     .except('store')
     .middleware(['auth']);
-  Route.post(
-    '/assistances/:assistance_id/reviews',
-    'ReviewController.store'
-  ).middleware(['auth']);
+  Route.post('/assistances/:assistance_id/reviews', 'ReviewController.store').middleware(['auth']);
 });
 
 Route.group(() => {
@@ -69,14 +51,9 @@ Route.group(() => {
     .apiOnly()
     .except('store')
     .middleware(['auth']);
-  Route.post(
-    '/assistances/:tutor_id',
-    'AssistanceController.store'
-  ).middleware(['auth']);
-  Route.get(
-    '/user/assistances/:tutor_id',
-    'AssistanceController.getAssistanceByUserId'
-  );
+  Route.post('/assistances/:tutor_id', 'AssistanceController.store').middleware(['auth']);
+  Route.post('/assistances/:id/status', 'AssistanceController.updateStatus');
+  Route.get('/user/assistances/:tutor_id', 'AssistanceController.getAssistanceByUserId');
 });
 
 Route.group(() => {
@@ -84,8 +61,5 @@ Route.group(() => {
     .apiOnly()
     .except('store')
     .middleware(['auth']);
-  Route.post(
-    '/comments/:assistance_id',
-    'CommentController.store'
-  ).middleware(['auth']);
+  Route.post('/comments/:assistance_id', 'CommentController.store').middleware(['auth']);
 });
