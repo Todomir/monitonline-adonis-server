@@ -35,7 +35,7 @@ class AssistanceController {
     const assistance = await Assistance.create({
       student_id: auth.user.id,
       tutor_id: params.tutor_id,
-      status_id: 0,
+      status_id: 1,
       ...data
     });
 
