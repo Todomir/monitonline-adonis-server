@@ -35,7 +35,8 @@ class AssistanceController {
     const assistance = await Assistance.create({
       student_id: auth.user.id,
       tutor_id: params.tutor_id,
-      ...data,
+      status_id: 0,
+      ...data
     });
 
     return assistance;
@@ -77,7 +78,12 @@ class AssistanceController {
    */
   async update({ params, request }) {
     const assistance = await Assistance.findOrFail(params.id);
-    const data = request.only(['student_id', 'tutor_id', 'subject_matter_id', 'schedule_id']);
+    const data = request.only([
+      'student_id',
+      'tutor_id',
+      'subject_matter_id',
+      'schedule_id'
+    ]);
 
     assistance.merge(data);
     await assistance.save();
