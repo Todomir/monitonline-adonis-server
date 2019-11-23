@@ -1,9 +1,10 @@
-'use strict'
-
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
-const Model = use('Model')
+const Model = use('Model');
 
 class Status extends Model {
+  assistance() {
+    return this.hasOne('App/Models/Assistance');
+  }
 }
 
-module.exports = Status
+module.exports = Status;
