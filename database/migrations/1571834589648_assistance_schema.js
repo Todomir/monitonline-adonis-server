@@ -39,6 +39,16 @@ class AssistanceSchema extends Schema {
         .onDelete('CASCADE');
       table.timestamps();
     });
+      table
+        .integer('status_id')
+        .unsigned()
+        .notNullable()
+        .references('id')
+        .inTable('status')
+        .onUpdate('CASCADE')
+        .onDelete('CASCADE');
+      table.timestamps();
+    });
   }
 
   down() {
