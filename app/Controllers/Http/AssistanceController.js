@@ -36,7 +36,7 @@ class AssistanceController {
       student_id: auth.user.id,
       tutor_id: params.tutor_id,
       status_id: 1,
-      ...data,
+      ...data
     });
 
     return assistance;
@@ -56,13 +56,25 @@ class AssistanceController {
     return assistance;
   }
 
-  async getAssistanceByUserId({ params }) {
+  async getAssistanceByTutorId({ params }) {
     const id = params.tutor_id;
 
     const assistances = await Assistance.query()
       .with('student')
       .with('schedule')
       .where('tutor_id', id)
+      .fetch();
+
+    return assistances;
+  }
+
+  async getAssistanceByStudentId({ params }) {
+    const id = params.tutor_id;
+
+    const assistances = await Assistance.query()
+      .with('student')
+      .with('schedule')
+      .where('student_id', id)
       .fetch();
 
     return assistances;
@@ -78,7 +90,13 @@ class AssistanceController {
    */
   async update({ params, request }) {
     const assistance = await Assistance.findOrFail(params.id);
-    const data = request.only(['student_id', 'tutor_id', 'subject_matter_id', 'schedule_id', 'status_id']);
+    const data = request.only([
+      'student_id',
+      'tutor_id',
+      'subject_matter_id',
+      'schedule_id',
+      'status_id'
+    ]);
 
     assistance.merge(data);
     await assistance.save();
