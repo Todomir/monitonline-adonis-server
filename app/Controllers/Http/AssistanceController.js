@@ -72,7 +72,7 @@ class AssistanceController {
     const id = params.student_id;
 
     const assistances = await Assistance.query()
-      .with('student')
+      .innerJoin('users', 'assistances.tutor_id', 'users.id')
       .with('schedule')
       .where('student_id', id)
       .fetch();
