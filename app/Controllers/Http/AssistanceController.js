@@ -69,7 +69,7 @@ class AssistanceController {
   }
 
   async getAssistanceByStudentId({ params }) {
-    const id = params.tutor_id;
+    const id = params.student_id;
 
     const assistances = await Assistance.query()
       .with('student')

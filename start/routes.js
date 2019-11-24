@@ -18,7 +18,10 @@ Route.group(() => {
   Route.resource('users', 'UserController').apiOnly();
 
   Route.post('/users/auth', 'UserController.authenticate');
-  Route.post('/users/fetchUsersByDescription', 'UserController.fetchUsersBySubjectMatterDescription');
+  Route.post(
+    '/users/fetchUsersByDescription',
+    'UserController.fetchUsersBySubjectMatterDescription'
+  );
   Route.get('/users/auth/getUser', 'UserController.getAuthenticadedUser').middleware(['auth']);
 });
 
@@ -52,7 +55,14 @@ Route.group(() => {
     .except('store')
     .middleware(['auth']);
   Route.post('/assistances/:tutor_id', 'AssistanceController.store').middleware(['auth']);
-  Route.get('/user/assistances/:tutor_id', 'AssistanceController.getAssistanceByUserId');
+  Route.get(
+    '/user/assistances/tutor/:tutor_id',
+    'AssistanceController.getAssistanceByTutorId'
+  ).middleware(['auth']);
+  Route.get(
+    '/user/assistances/student/:student_id',
+    'AssistanceController.getAssistanceByStudentId'
+  ).middleware(['auth']);
 });
 
 Route.group(() => {
