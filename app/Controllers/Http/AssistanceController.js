@@ -62,6 +62,7 @@ class AssistanceController {
     const assistances = await Assistance.query()
       .with('student')
       .with('schedule')
+      .with('comments')
       .where('tutor_id', id)
       .fetch();
 
@@ -74,6 +75,7 @@ class AssistanceController {
     const assistances = await Assistance.query()
       .innerJoin('users', 'assistances.tutor_id', 'users.id')
       .with('schedule')
+      .with('comments')
       .where('student_id', id)
       .fetch();
 
