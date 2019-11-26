@@ -1,4 +1,4 @@
-'use strict';
+
 
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
@@ -35,7 +35,7 @@ class CommentController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async store({ request, auth }) {
+  async store({ request, auth, params }) {
     const { content } = request.post();
     const comment = await Comment.create({
       user_id: auth.user.id,
