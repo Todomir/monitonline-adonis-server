@@ -57,19 +57,21 @@ class CommentController {
     return comment;
   }
 
-  async getByScheduleId({ params }) {
+  async getBySubjectMatterId({ params }) {
     const comments = Comment.query()
       .with('user')
       .innerJoin('assistances', 'comments.assistance_id', 'assistances.id')
-      .innerJoin('schedules', 'assistances.schedule_id', 'schedules.id')
+      .innerJoin('subject_matters', 'assistances.subject_matter_id', 'subject_matters.id')
+      .innerJoin('subject_matters_users', 'assistances.tutor_id', 'subject_matters_users.user_id')
       .select(
         'comments.id',
         'comments.content',
         'comments.assistance_id',
         'comments.user_id',
-        'assistances.schedule_id'
+        'subject_matters.subject_matter_description'
       )
-      .where('schedule_id', params.schedule_id)
+      .where('subject_matters.id', params.subject_matter_id)
+      .where('subject_matters_users.user_id', params.tutor_id)
       .fetch();
     return comments;
   }
