@@ -57,6 +57,23 @@ class CommentController {
     return comment;
   }
 
+  async getByScheduleId({ params }) {
+    const comments = Comment.query()
+      .with('user')
+      .innerJoin('assistances', 'comments.assistance_id', 'assistances.id')
+      .innerJoin('schedules', 'assistances.schedule_id', 'schedules.id')
+      .select(
+        'comments.id',
+        'comments.content',
+        'comments.assistance_id',
+        'comments.user_id',
+        'assistances.schedule_id'
+      )
+      .where('schedule_id', params.schedule_id)
+      .fetch();
+    return comments;
+  }
+
   /**
    * Update comment details.
    * PUT or PATCH comments/:id
