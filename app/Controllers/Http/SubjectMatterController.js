@@ -30,7 +30,7 @@ class SubjectMatterController {
     const { subject_id } = request.post();
 
     const subjectMatters = await SubjectMatter.query()
-      .where('subject_id', subject_id)
+      .whereIn('subject_id', subject_id)
       .fetch();
 
     return subjectMatters;
