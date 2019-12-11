@@ -30,7 +30,7 @@ class SubjectMatterController {
     const { subject_id } = request.post();
 
     const subjectMatters = await SubjectMatter.query()
-      .whereIn('subject_id', subject_id)
+      .where('subject_id', subject_id)
       .fetch();
 
     return subjectMatters;
@@ -45,10 +45,7 @@ class SubjectMatterController {
    * @param {Response} ctx.response
    */
   async store({ request }) {
-    const data = request.only([
-      'subject_matter_description',
-      'subject_id'
-    ]);
+    const data = request.only(['subject_matter_description', 'subject_id']);
     const subjectMatter = await SubjectMatter.create(data);
     return subjectMatter;
   }
