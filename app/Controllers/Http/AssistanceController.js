@@ -61,6 +61,7 @@ class AssistanceController {
 
     const assistances = await Assistance.query()
       .with('student')
+      .with('subjectMatter')
       .with('schedule')
       .with('comments')
       .where('tutor_id', id)
