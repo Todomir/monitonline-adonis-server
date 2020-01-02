@@ -88,20 +88,21 @@ class ReviewController {
     await review.delete();
   }
 
-  async getReviewBySubjectId({ params }) {
+  async getReviewBySubjectMatterId({ params }) {
     const reviews = await Review.query()
       .innerJoin('assistances', 'reviews.assistance_id', 'assistances.id')
       .innerJoin('subject_matters', 'assistances.subject_matter_id', 'subject_matters.id')
-      .innerJoin('subjects', 'subject_matters.subject_id', 'subjects.id')
       .select(
         'reviews.id as review_id',
         'reviews.review',
         'reviews.assistance_id',
         'reviews.user_id',
-        'subjects.id as subject_id',
-        'subjects.subject_description'
+        'subject_matters.id as subject_matter_id',
+        'subject_matters.subject_matter_description'
       )
-      .where('subjects.id', params.subject_id)
+      .where('subject_matters.id', params.subject_id)
+      .limit(6)
+      .orderBy('reviews.updated_at', 'desc')
       .fetch();
     return reviews;
   }
