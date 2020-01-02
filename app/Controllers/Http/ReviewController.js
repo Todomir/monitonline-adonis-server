@@ -87,6 +87,22 @@ class ReviewController {
     const review = await Review.findOrFail(params.id);
     await review.delete();
   }
+
+  async getReviewBySubjectId({ params }) {
+    const review = await Review.query()
+      .innerJoin('assistances', 'reviews.assistance_id', 'assistances.id')
+      .innerJoin('subject_matters', 'assistances.subject_matter_id', 'subject_matter.id')
+      .innerJoin('subjects', 'subject_matters.subject_id', 'subjects.id')
+      .select(
+        'review.id as review_id',
+        'reviews.review',
+        'reviews.assistance_id',
+        'reviews.user_id',
+        'subjects.id as subject_id',
+        'subjects.subject_description'
+      )
+      .where('subject.id', params.subject_id);
+  }
 }
 
 module.exports = ReviewController;
