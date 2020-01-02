@@ -47,6 +47,9 @@ Route.group(() => {
     .except('store')
     .middleware(['auth']);
   Route.post('/assistances/:assistance_id/reviews', 'ReviewController.store').middleware(['auth']);
+  Route.get('/reviews/subject/:subject_id', 'ReviewController.getReviewBySubjectId').middleware([
+    'auth'
+  ]);
 });
 
 Route.group(() => {
