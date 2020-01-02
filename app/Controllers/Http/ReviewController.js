@@ -1,11 +1,9 @@
-'use strict';
-
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @typedef {import('@adonisjs/framework/src/View')} View */
 
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
-const Review = use('App/Models/Schedule');
+const Review = use('App/Models/Review');
 
 /**
  * Resourceful controller for interacting with reviews
@@ -38,8 +36,9 @@ class ReviewController {
   async store({ request, auth, params }) {
     const data = request.only(['review']);
     const review = await Review.create({
-      user_id: auth.user.id, assistance_id: params.assistance_id
-      ...data,
+      user_id: auth.user.id,
+      assistance_id: params.assistance_id,
+      ...data
     });
     return review;
   }
