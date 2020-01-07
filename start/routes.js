@@ -75,8 +75,8 @@ Route.group(() => {
     .except('store')
     .middleware(['auth']);
   Route.post('/comments/:assistance_id', 'CommentController.store').middleware(['auth']);
-  Route.get(
-    'user/:tutor_id/comments/subject-matter/:subject_matter_id',
-    'CommentController.getBySubjectMatterId'
+  Route.post(
+    '/comments/subject-matter/:subject_matter_id',
+    'CommentController.getCommentsBySubjectMatterId'
   ).middleware(['auth']);
 });

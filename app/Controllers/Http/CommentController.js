@@ -57,21 +57,15 @@ class CommentController {
     return comment;
   }
 
-  async getBySubjectMatterId({ params }) {
+  async getCommentsBySubjectMatterId({ params, request }) {
+    const { tutor_id } = request.post();
     const comments = await Comment.query()
       .with('user')
       .innerJoin('assistances', 'comments.assistance_id', 'assistances.id')
       .innerJoin('subject_matters', 'assistances.subject_matter_id', 'subject_matters.id')
-      .innerJoin('subject_matters_users', 'assistances.tutor_id', 'subject_matters_users.user_id')
-      .select(
-        'comments.id',
-        'comments.content',
-        'comments.assistance_id',
-        'comments.user_id',
-        'subject_matters.subject_matter_description'
-      )
+      .select('comments.id', 'comments.content', 'comments.user_id', 'comments.assistance_id')
       .where('subject_matters.id', params.subject_matter_id)
-      .where('subject_matters_users.user_id', params.tutor_id)
+      .where('assistances.tutor_id', tutor_id)
       .fetch();
     return comments;
   }
