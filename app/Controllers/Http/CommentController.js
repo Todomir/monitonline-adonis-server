@@ -58,7 +58,7 @@ class CommentController {
   }
 
   async getBySubjectMatterId({ params }) {
-    const comments = Comment.query()
+    const comments = await Comment.query()
       .with('user')
       .innerJoin('assistances', 'comments.assistance_id', 'assistances.id')
       .innerJoin('subject_matters', 'assistances.subject_matter_id', 'subject_matters.id')
