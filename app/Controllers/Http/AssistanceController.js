@@ -87,6 +87,8 @@ class AssistanceController {
         'users.name as tutor_name'
       )
       .where('student_id', id)
+      .orderBy('assistances.updated_at', 'desc')
+      .limit(5)
       .fetch();
 
     return assistances;
